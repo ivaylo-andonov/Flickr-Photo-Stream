@@ -16,6 +16,7 @@ class App extends Component {
         };
 
         this.handleScroll = this.handleScroll.bind(this);
+        this.onSearchSubmit = this.onSearchSubmit.bind(this);
     }
        
     fetchFlickrPhotos() {    
@@ -75,18 +76,14 @@ class App extends Component {
         this.fetchFlickrPhotos();
     }
 
-    onSearchSubmit(){
-        
-    }
-
-    onSearchChange(){
-
+    onSearchSubmit(searchedItems){
+        this.setState({photosArray : searchedItems});
     }  
         
     render() {
         return (
         <div className="App">
-            <HeaderNavigation/>
+            <HeaderNavigation search={this.onSearchSubmit}/>
             <div className="photo-container">
             {this.state.photosArray.length?<PhotoGallery photos={this.state.photosArray} isFetch={this.state.isFetching}/>:''}
             </div>
