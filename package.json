@@ -1,0 +1,20 @@
+{
+  "name": "flickr-photo-stream",
+  "version": "1.0.0",
+  "description": "Flickr photo stream app with React",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvayloAndonov/Flickr-Photo-Stream.git"
+  },
+  "author": "Ivaylo Andonov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IvayloAndonov/Flickr-Photo-Stream/issues"
+  },
+  "homepage": "https://github.com/IvayloAndonov/Flickr-Photo-Stream#readme"
+}
