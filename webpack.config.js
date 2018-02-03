@@ -9,6 +9,8 @@ module.exports = {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
   },
+  cache: true,
+  devtool: 'source-maps',
   module: {
     rules: [
       {
