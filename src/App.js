@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PhotoGallery from './components/PhotoGallery';
+import HeaderNavigation from './components/HeaderNavigation';
 import PropTypes from 'prop-types';
 import $ from 'jquery'
 
@@ -32,8 +33,7 @@ class App extends Component {
         this.setState({isFetching : false});
         this.setState((prevState) => {
             return {photosArray: prevState.photosArray.concat(this.filterEqualPhotos(flickrPhotosResponse))};
-          });
-        
+          });       
     }
 
     componentDidMount() {
@@ -74,25 +74,25 @@ class App extends Component {
 
         this.fetchFlickrPhotos();
     }
-        
-    render() {
-        return (
-        <div className="App">
-            <div className="photo-container">
-                <PhotoGallery photos={this.state.photosArray} isFetch={this.state.isFetching}/>
-            </div>
-            <div className="clearfix"></div>
-        </div>
-        );
-    }
 
     onSearchSubmit(){
-
+        
     }
 
     onSearchChange(){
 
-    }        
+    }  
+        
+    render() {
+        return (
+        <div className="App">
+            <HeaderNavigation/>
+            <div className="photo-container">
+            {this.state.photosArray.length?<PhotoGallery photos={this.state.photosArray} isFetch={this.state.isFetching}/>:''}
+            </div>
+        </div>
+        );
+    }      
 }
 
 App.propTypes = {
