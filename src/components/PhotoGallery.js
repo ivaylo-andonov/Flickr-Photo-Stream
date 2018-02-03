@@ -5,38 +5,36 @@ import $ from 'jquery'
 class PhotoGallery extends Component {
     constructor(props) {
         super(props);
-        this.photoItems = this.handleFlickrResponse(props.photos);
     }
-    handleFlickrResponseItem({
-        title,
-        link,
-        author,
-        tags,
-        media:{
-          m:thumbnail
-        }
-      }) {
-         const startIndex = author.indexOf("(") + 1
-          const endIndex = author.indexOf(")");
-          author = author.substr(startIndex,endIndex)
-          tags = tags.split(" ")
-          return {
+
+    handleFlickrResponseItem({title, link, author, tags, media:{m:thumbnail}}) {
+
+        const startIndex = author.indexOf("(");
+        const endIndex = author.indexOf(")");
+        author = author.substr(startIndex + 2 ,endIndex)
+        tags = tags.split(" ")
+
+        return {
             title,
             link,
             thumbnail,
             tags,
             author
-          }  
-      }
+        }  
+    }
       
-     handleFlickrResponse(items) {
-        return items.map(this.handleFlickrResponseItem)
-      }
+    handleFlickrResponse(items) {
+        if(items.length){
+            return items.map(this.handleFlickrResponseItem)
+        }
+        return [];
+    }
         
     render() {
+        var photos = this.handleFlickrResponse(this.props.photos)
         return (
-                <div>{this.photoItems.map((item, index) =>  
-                <PhotoView key={index} photo={item}/>)}
+                <div>{photos.length ? photos.map((item, index) =>  
+                    <PhotoView key={index} photo={item}/>) : "Loading..."}
                 </div>
         );
     }      

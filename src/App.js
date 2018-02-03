@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import PhotoGallery from './components/PhotoGallery';
-
+import PropTypes from 'prop-types';
 import $ from 'jquery'
 
 const flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
@@ -17,8 +16,7 @@ class App extends Component {
 
         this.handleScroll = this.handleScroll.bind(this);
     }
-    
-    
+       
     fetchFlickrPhotos() {    
         this.setState({isFetching : true})
         $.ajax({
@@ -31,10 +29,11 @@ class App extends Component {
     }
 
     loadMorePhotos(flickrPhotosResponse) {
+        this.setState({isFetching : false});
         this.setState((prevState) => {
             return {photosArray: prevState.photosArray.concat(this.filterEqualPhotos(flickrPhotosResponse))};
           });
-        this.setState({isFetching : false})
+        
     }
 
     componentDidMount() {
@@ -80,8 +79,7 @@ class App extends Component {
         return (
         <div className="App">
             <div className="photo-container">
-                {this.state.isFetching && this.state.photosArray.length ? "Loading..." :
-                 <PhotoGallery photos={this.state.photosArray}></PhotoGallery> }
+                <PhotoGallery photos={this.state.photosArray} isFetch={this.state.isFetching}/>
             </div>
             <div className="clearfix"></div>
         </div>
