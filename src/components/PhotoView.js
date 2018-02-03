@@ -1,15 +1,17 @@
 import React from 'react';
+import TagsComponent from './TagsComponent';
 
 const PhotoView = props => (
-    <div key={props.photo.author_id} className="responsive">
+    <div className="responsive">
         <div className="gallery">
-            <img src={props.photo.media.m} alt="Trolltunga Norway" width="600" height="400"></img>                     
+            <img src={props.photo.thumbnail} alt={props.photo.title}></img>                     
         </div>
         <div className="container">
-            <a href={props.photo.link} target="_blank" className="title">Title: {props.photo.title}</a>
+            Title: <a href={props.photo.link} target="_blank" className="title"> {props.photo.title}</a>
             <div className="author">Author: {props.photo.author}</div>
+            <TagsComponent tags={props.photo.tags}/>
             {/* <div dangerouslySetInnerHTML={{ __html:props.photo.description }} />
-            <div className="author">Tags: {props.photo.tags}</div> */}
+             */}
         </div>
     </div>
 );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import PhotoView from './components/PhotoView';
+import PhotoGallery from './components/PhotoGallery';
+
 import $ from 'jquery'
 
 const flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
@@ -79,10 +80,9 @@ class App extends Component {
         return (
         <div className="App">
             <div className="photo-container">
-                {this.isFetching ? "Loading..." : this.state.photosArray.map((item, index) =>  
-                <PhotoView key={index} photo={item}/>)}
+                {this.state.isFetching && this.state.photosArray.length ? "Loading..." :
+                 <PhotoGallery photos={this.state.photosArray}></PhotoGallery> }
             </div>
-
             <div className="clearfix"></div>
         </div>
         );
