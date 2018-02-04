@@ -11,6 +11,7 @@ Additional libs and helpers:
 
 Photos stream by Flickr public API
 
+Task url : https://github.com/holidayextras/culture/blob/master/recruitment/developer-flickr-task.md
 
 Create Project
 ---
