@@ -24,6 +24,9 @@ import React from 'react';
       })
       .then(result => this.loadPhotos(result.items))
       .catch(e => console.log(e));
+
+      this.setState({value: ''});
+      this.refs.inputSearch.value = '';
     }
 
     loadPhotos(flickrPhotosResponse) {
@@ -35,7 +38,7 @@ import React from 'react';
         <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">Flickr Photo Stream</a>
+            <a href="javascript:window.location.href=window.location.href">Flickr Photo Stream</a>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -43,15 +46,14 @@ import React from 'react';
           <Navbar.Form pullLeft>
             <form onSubmit={this.handleSubmit}>
             <FormGroup>
-                <Label>Search by tag name:
-              <FormControl type="text" ref={"inputSearch"} onChange={this.handleChange} placeholder="Search"/>
-              </Label>
+            <Label>Search by tag name:</Label>
+              <input className="form-control" type="text" ref={"inputSearch"} onChange={this.handleChange} placeholder="Search"/>     
             </FormGroup>
             <Button type="submit">Submit</Button>
             </form>
           </Navbar.Form>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#"><Glyphicon glyph="glyphicon glyphicon-refresh"/>{' '}Refresh</NavItem>
+            <NavItem eventKey={1} href="javascript:window.location.href=window.location.href"><Glyphicon glyph="glyphicon glyphicon-refresh"/>{' '}Reload random flickrs</NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar> 

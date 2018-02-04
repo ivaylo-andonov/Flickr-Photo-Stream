@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PhotoGallery from './components/PhotoGallery';
 import HeaderNavigation from './components/HeaderNavigation';
+import LoaderIndicator from './components/LoaderIndicator'
 import PropTypes from 'prop-types';
 import $ from 'jquery'
 
@@ -12,41 +13,53 @@ class App extends Component {
     
         this.state = {
           photosArray: [],
-          isFetching : false
+          isFetching : false,
+          hasError : false
         };
 
         this.handleScroll = this.handleScroll.bind(this);
         this.onSearchSubmit = this.onSearchSubmit.bind(this);
+        this.getFlickrPhotos = this.getFlickrPhotos.bind(this);
     }
-       
-    fetchFlickrPhotos() {    
-        this.setState({isFetching : true})
+
+    componentDidMount() {
+        this.getFlickrPhotos(); 
+    }
+
+    getFlickrPhotos(){
+        this.setState({isFetching : true});
+        this.fetchFlickrPhotos();
+        this.attachScrollHandler();
+    }
+
+    fetchFlickrPhotos() {        
         $.ajax({
             url: flickerAPI,
             dataType: 'jsonp',
             data: { "format": "json" }
           })
-          .then(result => this.loadMorePhotos(result.items))
-          .catch(e => console.log(e));
+          .then(result => this.loadPhotos(result.items))
+          .catch(e => this.handleErrorResponse(e));
     }
 
-    loadMorePhotos(flickrPhotosResponse) {
-        this.setState({isFetching : false});
+    loadPhotos(flickrPhotosResponse) {       
+        let newPhotos = this.filterDublicatePhotos(flickrPhotosResponse);
+        let newPhotosFormatted = this.formatFlickrResponse(newPhotos);
+
         this.setState((prevState) => {
-            return {photosArray: prevState.photosArray.concat(this.filterEqualPhotos(flickrPhotosResponse))};
-          });       
+            return {photosArray: prevState.photosArray.concat(newPhotosFormatted)};
+          });
+          
+        this.setState({isFetching : false});
     }
 
-    componentDidMount() {
-        this.fetchFlickrPhotos();
-        window.addEventListener('scroll', this.handleScroll);    
-    }
+    onSearchSubmit(searchedItems){        
+        let newPhotosFormatted = this.formatFlickrResponse(searchedItems);
+        this.setState({photosArray : newPhotosFormatted});
+        this.dettachScrollHandler();
+    }  
 
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-
-    filterEqualPhotos(newPhotos){
+    filterDublicatePhotos(newPhotos){
         var res = [];
         for (var photoItem of newPhotos) {
             if (!this.state.photosArray.some(e => e.title === photoItem.title)) {
@@ -55,6 +68,34 @@ class App extends Component {
         }
         return res;
     }
+
+    formatFlickrResponseItem({title, link, author, author_id, description, tags, media:{m:thumbnail}}) {
+        const startIndex = author.indexOf("(");
+        const endIndex = author.indexOf(")");
+        author = author.substring(startIndex + 2 ,endIndex - 1)
+        tags = tags.split(" ")
+
+        return {title, link, thumbnail, tags, author,author_id, description}  
+    }
+              
+    formatFlickrResponse(items) {
+        if(items.length){
+            return items.map(this.formatFlickrResponseItem)
+        }
+        return [];
+    }
+
+    handleErrorResponse(e){
+        this.setState({hasError : true});
+    }
+
+    dettachScrollHandler(){
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    attachScrollHandler(){
+        window.addEventListener('scroll', this.handleScroll);
+    }  
 
     getDocumentHeight() {
         const body = document.body;
@@ -71,21 +112,19 @@ class App extends Component {
     }
     
     handleScroll(event) {
-        if (this.getScrollTop() < this.getDocumentHeight() - window.innerHeight - 50) return;
+        if (this.getScrollTop() < this.getDocumentHeight() - window.innerHeight) return;
 
+        this.setState({isFetching : true});
         this.fetchFlickrPhotos();
     }
-
-    onSearchSubmit(searchedItems){
-        this.setState({photosArray : searchedItems});
-    }  
         
     render() {
         return (
         <div className="App">
             <HeaderNavigation search={this.onSearchSubmit}/>
+            <LoaderIndicator error={this.state.hasError} isLoading={this.state.isFetching}/>
             <div className="photo-container">
-            {this.state.photosArray.length?<PhotoGallery photos={this.state.photosArray} isFetch={this.state.isFetching}/>:''}
+            {this.state.photosArray.length?<PhotoGallery photos={this.state.photosArray}/>:''}
             </div>
         </div>
         );
@@ -93,7 +132,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-    isFetching: PropTypes.bool
+    isFetching: PropTypes.bool,
+    photosArray : PropTypes.array
 }
 
 export default App

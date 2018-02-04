@@ -13,14 +13,15 @@
 }
 
 div.container {
-    text-align: center;
+    text-align: left;
     padding: 10px 20px;
     height: 20vh;
     overflow: hidden;
+    width: 90%;
   }
   
 div.gallery {
-      width: 80%;
+      width: 90%;
       background-color: white;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       height: 30vh;
@@ -37,6 +38,30 @@ div.gallery img {
 div.desc {
     padding: 15px;
     text-align: center;
+}
+
+.details{
+    width: 100%;
+    height: 20%;
+    overflow: hidden;
+}
+
+.tag{
+    margin:3px;
+    display: inline-block;
+}
+
+.loader{
+    position: fixed;
+    background-color: #EEE;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.);
+    border: 1px solid #CCC;
+    top: 100px;
+    left:600px;
+}
+
+.well{
+    width: 80%;
 }
 
 @media only screen and (max-width: 700px){
