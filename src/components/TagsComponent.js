@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Tag = ({name, index}) => {
-    if(name && index < 5) {
+    if(name && index <= 3) {
       return (<span className="tag" key={index}>
         <a href="#">#{name}</a>
       </span>)

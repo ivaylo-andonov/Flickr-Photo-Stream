@@ -87,6 +87,7 @@ class App extends Component {
 
     handleErrorResponse(e){
         this.setState({hasError : true});
+        console.log(e);
     }
 
     dettachScrollHandler(){
@@ -108,7 +109,8 @@ class App extends Component {
     };
     
     getScrollTop() {
-        return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+        return (window.pageYOffset !== undefined) ? window.pageYOffset : 
+        (document.documentElement || document.body.parentNode || document.body).scrollTop;
     }
     
     handleScroll(event) {
@@ -133,6 +135,7 @@ class App extends Component {
 
 App.propTypes = {
     isFetching: PropTypes.bool,
+    hasError : PropTypes.bool,
     photosArray : PropTypes.array
 }
 

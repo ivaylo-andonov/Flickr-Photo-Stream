@@ -2,7 +2,7 @@
   "name": "flickr-photo-stream",
   "version": "1.0.0",
   "description": "Flickr photo stream app with React",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "test",
     "start": "node server.js"
@@ -31,8 +31,6 @@
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "redux": "^3.7.2",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^2.0.4"
   }
