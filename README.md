@@ -34,9 +34,8 @@ Usage
 2. Open [http://localhost:3000/](http://localhost:3000/).
 
 
-Build it from Scratch
+Supported features:
 ---
-Supported feature:
 
 * Photos fetching from Flickr API
 * Search photos by tag/tags name
@@ -44,6 +43,7 @@ Supported feature:
 * Responsive design
 
 
-More Details
+Testing
 ---
-
+* Jest
+* Enzyme
