@@ -14,6 +14,6 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(express.static(__dirname + '/public'));
 
-const server = app.listen(3000, function() {
-  console.log('Example app listening at http://localhost:3000');
+const server = app.listen(process.env.PORT || 5000, function() {
+  console.log('Example app listening at http://localhost:5000');
 });
