@@ -5,27 +5,29 @@ import ParserHelper from '../helpers/ParserHelper'
 
 const flickrUsersUrl = 'https://www.flickr.com/people/';
 
-const PhotoView = props => (
-    <div className="responsive">
+const PhotoView = props => {
+    let {photo} = props;
+    
+    return (<div className="responsive">
         <div className="gallery">
-            <img src={props.photo.thumbnail} alt={props.photo.title}></img>                     
+            <img src={photo.thumbnail} alt={photo.title}></img>                     
         </div>
         <Well className="details-container">
             <div className="title details">
             <Label>Title:</Label> 
-                <a href={props.photo.link} target="_blank" className="title"> {props.photo.title}</a>
+                <a href={photo.link} target="_blank" className="title"> {photo.title}</a>
             </div>
             <div className="author details">
             <Label>Author:</Label>
-                <a href={flickrUsersUrl + props.photo.author_id} target="_blank">{props.photo.author}</a>
+                <a href={flickrUsersUrl + photo.author_id} target="_blank">{photo.author}</a>
             </div>
             <div className="description details">
             <Label>Description:</Label>
-            {ParserHelper.parseRawHtmlString(props.photo.description)}  
+            {ParserHelper.parseRawHtmlString(photo.description)}  
           </div>
-          <TagsComponent tags={props.photo.tags}/>
+          <TagsComponent tags={photo.tags} onSelectTag={props.onSelectTag}/>
         </Well>
-    </div>
-);
+    </div>)
+};
 
 export default PhotoView;

@@ -9,7 +9,7 @@ class PhotoGallery extends Component {
     render() {
         return (
             <div>{this.props.photos.map((item, index) =>  
-                <PhotoView key={index} photo={item}/>)}
+                <PhotoView key={index} photo={item} onSelectTag={this.props.onSelectTag}/>)}
             </div>
         );
     }      

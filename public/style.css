@@ -2,22 +2,30 @@
     box-sizing: border-box;
 }
 
+.navbar-form{
+    margin: 15px;
+}
+
+.navbar-form form > * {
+    vertical-align: middle;
+    display: inline;
+    margin-right: 10px;
+}
+
+.form-control{
+    
+    display: inline-block;
+    width: auto;  
+}
+
 .responsive {
-    padding: 0 5px;
+    padding: 5px 5px;
     float: left;
     width: 24.99999%;
     text-align: center;
     margin-bottom: 25px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-div.details-container {
-    text-align: left;
-    padding: 10px 20px;
-    height: 25vh;
-    overflow: hidden;
-    width: 90%;
 }
   
 div.gallery {
@@ -35,26 +43,23 @@ div.gallery img {
     height: 100%;
 }
 
-.navbar-form{
-    margin: 15px;
-}
-
-.navbar-form form > * {
-    vertical-align: middle;
-    display: inline;
-    margin-right: 10px;
-}
-
-.form-control{
-    
-    display: inline-block;
-    width: auto;  
+div.details-container {
+    text-align: left;
+    padding: 10px 20px;
+    height: 23vh;
+    overflow: hidden;
+    width: 90%;
 }
 
 .details{
-    width: 80%;
-    height: 5vh;
+    width: 90%;
+    height: 4vh;
     overflow: hidden;
+}
+
+.tags{
+    height: 8vh;
+    width: 100%;
 }
 
 .tag{
@@ -67,12 +72,12 @@ div.gallery img {
     background-color: #EEE;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.);
     border: 1px solid #CCC;
-    top: 50%;
+    top: 20%;
     left:50%;
 }
 
 .well{
-    width: 80%;
+    width: 90%;
 }
 
 .label{

@@ -42,7 +42,8 @@ Supported features:
 ---
 
 * Photos fetching from Flickr API
-* Search photos by tag/tags name (multiple tags search is able as tags are separated by comma)
+* Search photos by tag name/s (multiple tags search is able as tags are separated by comma)
+* Loading filtered photos via click from any photo`s '#hashtag'
 * Lazy loading/infinity scrolling
 * Responsive design
 

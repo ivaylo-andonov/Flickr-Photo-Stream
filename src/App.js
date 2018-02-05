@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import $ from 'jquery'
 import PhotoGallery from './components/PhotoGallery';
 import HeaderNavigation from './components/HeaderNavigation';
 import LoaderIndicator from './components/LoaderIndicator'
 import PropTypes from 'prop-types';
-import $ from 'jquery'
 
 const flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 
@@ -126,7 +126,8 @@ class App extends Component {
             <HeaderNavigation search={this.onSearchSubmit}/>
             <LoaderIndicator error={this.state.hasError} isLoading={this.state.isFetching}/>
             <div className="photo-container">
-            {this.state.photosArray.length?<PhotoGallery photos={this.state.photosArray}/>:''}
+            {this.state.photosArray.length ?
+            <PhotoGallery onSelectTag={this.onSearchSubmit} photos={this.state.photosArray}/> : ''}
             </div>
         </div>
         );
