@@ -75,7 +75,7 @@ class App extends Component {
         author = author.substring(startIndex + 2 ,endIndex - 1)
         tags = tags.split(" ")
 
-        return {title, link, thumbnail, tags, author,author_id, description}  
+        return {title, link, thumbnail, tags, author, author_id, description}  
     }
               
     formatFlickrResponse(items) {

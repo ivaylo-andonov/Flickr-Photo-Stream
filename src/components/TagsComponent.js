@@ -24,7 +24,12 @@ class TagsComponent extends React.Component {
   }
 
   loadPhotos(flickrPhotosResponse) {
-      this.props.onSelectTag(flickrPhotosResponse);     
+      this.props.onSelectTag(flickrPhotosResponse);
+      this.scrollToTop(); 
+  }
+
+  scrollToTop() {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
   }
 
   render() {

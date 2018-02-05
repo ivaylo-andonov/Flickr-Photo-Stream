@@ -11,7 +11,8 @@ Additional libs and helpers:
 
 Photos stream by Flickr public API
 
-App hosted at : http://safe-anchorage-79210.herokuapp.com (in chrome select not secure - no https)
+App hosted at : http://tranquil-bastion-93473.herokuapp.com 
+/allow not secure from browser, no https/
 ---
 
 Task url : https://github.com/holidayextras/culture/blob/master/recruitment/developer-flickr-task.md
