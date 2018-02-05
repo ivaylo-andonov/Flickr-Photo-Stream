@@ -2,6 +2,7 @@ import { shallow , mount,configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import App from '../App';
+import mockData from './mockResponse';
 import HeaderNavigation from '../components/HeaderNavigation';
 
 configure({ adapter: new Adapter() });
@@ -15,17 +16,21 @@ describe('<App />', () => {
     const instance = appComponent.instance();
     expect(instance).toBeDefined();
   });
-
-  // it('<App /> should loadPhotos call filterDublicatePhotos', () => {
+ 
+  // it('<App /> [loadPhotos] works fine', () => {
   //   const instance = appComponent.instance();
-  //   instance.loadPhotos();
-  //   expect(instance.filterDublicatePhotos).toBeCalled();
+  //   const jsonMockData = JSON.parse(mockData);
+  //   instance.loadPhotos(mockData);
+    
+  //   expect(instance.state.photosArray.length).toEqual(jsonMockData.length)
+  //   expect(instance.state.isFetching).toEqual(false)
   // });
 
   // it('<HeaderNavigationComponent> simulates click Search', () => {
   //   const instance = headerNavigationComponent.instance();
-  //   var mockEvent = jest.fn();
+  //   instance.handleSubmit = jest.fn(() => mockData);
   //   headerNavigationComponent.find('#search-btn').simulate('click');
-  //   expect(instance.handleSubmit(mockEvent)).toBeCalled();
+  //   expect(instance.handleSubmit).toBeCalled();
   // });
+});
 });
