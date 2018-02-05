@@ -1,7 +1,7 @@
 import React from 'react';
 import TagsComponent from './TagsComponent';
 import {Well, Label, NavItem} from 'react-bootstrap';
-import Parser from 'html-react-parser';
+import ParserHelper from '../helpers/ParserHelper'
 
 const flickrUsersUrl = 'https://www.flickr.com/people/';
 
@@ -10,7 +10,7 @@ const PhotoView = props => (
         <div className="gallery">
             <img src={props.photo.thumbnail} alt={props.photo.title}></img>                     
         </div>
-        <Well className="container">
+        <Well className="details-container">
             <div className="title details">
             <Label>Title:</Label> 
                 <a href={props.photo.link} target="_blank" className="title"> {props.photo.title}</a>
@@ -21,24 +21,11 @@ const PhotoView = props => (
             </div>
             <div className="description details">
             <Label>Description:</Label>
-            {Parser(props.photo.description, {
-              replace: function(domNode) {
-                let descEl = getLastNodeEL(domNode);
-                if(descEl.children && descEl.children[0]){
-                  return <span>{descEl.children[0].data}</span>
-                }
-              }})}  
+            {ParserHelper.parseRawHtmlString(props.photo.description)}  
           </div>
           <TagsComponent tags={props.photo.tags}/>
         </Well>
     </div>
 );
-
-function getLastNodeEL(el){
-    while(el.next){
-        el = el.next;
-    }
-    return el;
-}
 
 export default PhotoView;
