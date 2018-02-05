@@ -1,9 +1,10 @@
 import React from 'react';
 import TagsComponent from './TagsComponent';
-import {Well} from 'react-bootstrap';
+import {Well, Label, NavItem} from 'react-bootstrap';
 import Parser from 'html-react-parser';
 
 const flickrUsersUrl = 'https://www.flickr.com/people/';
+
 const PhotoView = props => (
     <div className="responsive">
         <div className="gallery">
@@ -11,12 +12,15 @@ const PhotoView = props => (
         </div>
         <Well className="container">
             <div className="title details">
-            <strong>Title</strong>: <a href={props.photo.link} target="_blank" className="title"> {props.photo.title}</a>
+            <Label>Title:</Label> 
+                <a href={props.photo.link} target="_blank" className="title"> {props.photo.title}</a>
             </div>
-            <div className="author details"><strong>Author</strong>:
-            <a href={flickrUsersUrl + props.photo.author_id} target="_bla">{props.photo.author}</a>
+            <div className="author details">
+            <Label>Author:</Label>
+                <a href={flickrUsersUrl + props.photo.author_id} target="_blank">{props.photo.author}</a>
             </div>
-            <div className="description details"><strong>Description</strong>:
+            <div className="description details">
+            <Label>Description:</Label>
             {Parser(props.photo.description, {
               replace: function(domNode) {
                 let descEl = getLastNodeEL(domNode);

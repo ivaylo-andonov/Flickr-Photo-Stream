@@ -35,27 +35,26 @@ import React from 'react';
   
     render() {
       return (
+
         <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="javascript:window.location.href=window.location.href">Flickr Photo Stream</a>
           </Navbar.Brand>
-          <Navbar.Toggle />
         </Navbar.Header>
-        <Navbar.Collapse>
           <Navbar.Form pullLeft>
             <form onSubmit={this.handleSubmit}>
             <FormGroup>
             <Label>Search by tag name:</Label>
               <input className="form-control" type="text" ref={"inputSearch"} onChange={this.handleChange} placeholder="Search"/>     
             </FormGroup>
-            <Button type="submit">Submit</Button>
+            <Button id="search-btn" type="submit">Search</Button>
             </form>
           </Navbar.Form>
           <Nav pullRight>
-            <NavItem eventKey={1} href="javascript:window.location.href=window.location.href"><Glyphicon glyph="glyphicon glyphicon-refresh"/>{' '}Reload random flickrs</NavItem>
+            <NavItem eventKey={1} href="javascript:window.location.href=window.location.href">
+            <Glyphicon glyph="glyphicon glyphicon-refresh"/>Reload random flickrs</NavItem>
           </Nav>
-        </Navbar.Collapse>
       </Navbar> 
       );
     }

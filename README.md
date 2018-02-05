@@ -11,6 +11,7 @@ Additional libs and helpers:
 
 Photos stream by Flickr public API
 
+App hosted at : tranquil-bastion-93473.herokuapp.com
 Task url : https://github.com/holidayextras/culture/blob/master/recruitment/developer-flickr-task.md
 
 Create Project
@@ -39,7 +40,7 @@ Supported features:
 ---
 
 * Photos fetching from Flickr API
-* Search photos by tag/tags name
+* Search photos by tag/tags name (multiple tags search is able as tags are separated by comma)
 * Lazy loading/infinity scrolling
 * Responsive design
 

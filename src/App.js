@@ -136,7 +136,15 @@ class App extends Component {
 App.propTypes = {
     isFetching: PropTypes.bool,
     hasError : PropTypes.bool,
-    photosArray : PropTypes.array
+    photosArray : PropTypes.array,
+    fetchFlickrPhotos : PropTypes.func,
+    getFlickrPhotos : PropTypes.func,
+    getDocumentHeight : PropTypes.func,
+    getScrollTop : PropTypes.func,
+    loadPhotos: PropTypes.func,
+    formatFlickrResponse : PropTypes.func,
+    filterDublicatePhotos:PropTypes.func,
+    flickerAPI : PropTypes.string
 }
 
 export default App
