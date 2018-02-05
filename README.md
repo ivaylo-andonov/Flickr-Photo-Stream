@@ -11,7 +11,9 @@ Additional libs and helpers:
 
 Photos stream by Flickr public API
 
-App hosted at : tranquil-bastion-93473.herokuapp.com
+App hosted at : http://tranquil-bastion-93473.herokuapp.com
+---
+
 Task url : https://github.com/holidayextras/culture/blob/master/recruitment/developer-flickr-task.md
 
 Create Project
